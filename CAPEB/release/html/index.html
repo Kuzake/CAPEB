@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>L'application CAPEB</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link id="couleur" rel="stylesheet" href="release/css/style-blanc.min.css">
+    <link rel="stylesheet" href="release/css/flaticon.min.css">
+    <script>
+        function changeStyle(color){
+            document.getElementById('couleur').setAttribute('href','release/css/style-' + color + '.min.css');
+        }
+    </script>
+  </head>
+  <body>
+      <select onchange="changeStyle(this.value)">
+          <option>blanc</option>
+          <option>jaune</option>
+          <option>rose</option>
+          <option>vert</option>
+          <option>bleu</option>
+          <option>orange</option>
+      </select>
+      <div id="corps">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <img class="col-md-6" src="img/img/logo_capeb.png" alt="logo CAPEB"/>
+                        <p id="descri" class="col-md-9">Pour votre iPhone ou Android, la CAPEB est plus proche de vous à présent : actualités, formations, boites à outils, notifications, etc.</p>
+                        <a href="https://play.google.com/store/apps/details?id=com.websenso.capeb71" title="Télécharger sur Google Play">
+                            <img class="col-md-4" src="img/img/badge_android.png" alt="télécharger sur Google Play"/>
+                        </a>
+                        <a href="https://itunes.apple.com/fr/app/capeb-71/id971652081?mt=8" title="Télécharger sur l'app Store">
+                            <img class="col-md-4" id="apple" src="img/img/badge_apple.png" alt="télécharger sur l'App Store"/>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <img id="deco" src="img/img/capeb_app_screen.png" alt="deco CAPEB"/>
+                </div>
+            </div>
+        </div>
+      </div>
+      <div id="inscri">
+          <form id="formu" action="#">
+              <p class="text-center">Besoin d'une présentation rapide par email ? Avec plaisir, saisissez votre email est vous recevre immédiatement un très joli email.</p>
+              <div class="input-group">
+
+                <input type="text" class="form-control" id="inputGroupSuccess4" aria-describedby="inputGroupSuccess4Status" required="required" placeholder="Votre mail"/>
+                <span onclick="envoi()" class="input-group-addon btn">Recevoir la présentation</span>
+              </div>
+          </form>
+      </div>
+      <footer>
+          <div class="text-center" id="reseau">
+              <a title="lien vers le facebook" href="#"><span class="img-circle flaticon-facebook-logo"></span></a>
+              <a title="lien vers le twitter" href="#"><span class="img-circle flaticon-twitter-logo-silhouette"></span></a>
+              <a title="Envoyer un mail" href="#"><span class="img-circle flaticon-close-envelope"></span></a>
+              <a title="lien vers le rss" href="#"><span class="img-circle flaticon-social-rss"></span></a>
+          </div>
+          <div class="text-center" id="miw">
+              <p>MIW © 2016</p>
+              <p>Envie d'un stage ? <a title="lien vers le site websenso" href="http://www.websenso.com" target="_blank">www.WebSens.com</a> ;-)<br/>Il fallait que vous le glissiez quelques part ...</p>
+          </div>
+      </footer>
+
+      <script>
+        function envoi(){
+            var mess = document.createElement("em");
+            var champ = document.getElementById("inputGroupSuccess4");
+            if(champ.value == ""){
+                var text = document.createTextNode("Entrez votre adresse mail");
+                mess.setAttribute("class", "text-center text-danger");
+            }
+            else{
+                var text = document.createTextNode("Merci");
+                mess.setAttribute("class", "text-center text-success");
+            }
+            mess.appendChild(text);
+            var contain = document.getElementById("formu");
+
+            var exist = contain.getElementsByTagName("em");
+            if (exist[0]) {
+                contain.removeChild(exist[0]);
+            }
+
+            contain.insertBefore(mess);
+        }
+      </script>
+  </body>
+</html>
